@@ -79,9 +79,9 @@ document.addEventListener("deviceready",function(){
 
 
 $('#Guardar').on('tap', function (){
-alert ('guardar');
+alert ('guardar '+ $( "#TxtInterrogatorioDirecto option:selected" ).text());
    db.transaction(function (tx) {
-   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ("'+ $('#TxtNombrePaciente').val() + '", "'+ $('#TxtEdadPaciente').val() +'", "'+ $('#TxtDirPaciente').val() +'", "'+ $('#TxtFNacPaciente').val() +'", "'+ $('#TxtFConsultaPaciente').val() +'", "'+ $( "#TxtInterrogatorioDirecto option:selected" ).text() +'")');
+   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo ) VALUES ("'+ $('#TxtNombrePaciente').val() + '", "'+ $('#TxtEdadPaciente').val() +'", "'+ $('#TxtDirPaciente').val() +'", "'+ $('#TxtFNacPaciente').val() +'", "'+ $('#TxtFConsultaPaciente').val() +'", "'+ $( "#TxtInterrogatorioDirecto option:selected" ).text() +'")');
 });
 });
 
