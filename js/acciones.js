@@ -17,6 +17,24 @@ $(document).on("pagecreate",function(){
     dateFormat: "dd-MM-yyyy"
 });
 
+    var picker2 = $( "#TxtFNacPaciente", this );
+    picker2.mobipick();
+	
+	//formato para el input de fecha
+	var picker2 = $( "#TxtFNacPaciente" ).mobipick({
+    dateFormat: "dd-MM-yyyy"
+});
+
+    var picker3 = $( "#TxtFConsultaPaciente", this );
+    picker2.mobipick();
+	
+	//formato para el input de fecha
+	var picker3 = $( "#TxtFConsultaPaciente" ).mobipick({
+    dateFormat: "dd-MM-yyyy"
+});
+
+
+
 });
 // ----------------------- fin del selector de fecha ---------------------------------
 
@@ -32,12 +50,12 @@ $(document).ready(function(e) {
        "Nombre_Paciente NOT NULL, " +
        "Edad_Paciente NOT NULL, " +
        "Dir_Paciente , " +
-       "FNac_Paciente NOT NULL, " +
+       "FNac_Paciente, " +
        "FConsulta_Paciente NOT NULL, " +
 	   "Interrogtorio_Directo NOT NULL, " +
-  	   "FProbAlum_Paciente NOT NULL, " +
-	   "Riesgo_Obstetrico NOT NULL, " +
-       "FUMen_Paciente INTEGER NOT NULL)"
+  	   "FProbAlum_Paciente, " +
+	   "Riesgo_Obstetrico, " +
+       "FUMen_Paciente)"
        transaction.executeSql (sql, undefined, function ()
         {
          alert ("Tabla Creada");
@@ -61,10 +79,15 @@ document.addEventListener("deviceready",function(){
 
 
 $('#Guardar').on('tap', function (){
-	db.transaction(function (tx) {
-
-   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
-});
+//	db.transaction(function (tx) {
+$('#TxtNombrePaciente').text()
+/*TxtEdadPaciente
+TxtDirPaciente
+TxtFNacPaciente
+TxtFConsultaPaciente
+TxtInterrogatorioDirecto
+   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "+ +", "+ +", "+ +", "+ +", "+ +", "+ +")');
+});*/
 });
 
 $('#Mostrar').on('tap', function(){
@@ -154,8 +177,21 @@ $('#calcular').on('tap',function(){
     var dateObject = $( this ).mobipick( "option", "date" );
 });
 
-
+	picker2.on( "change", function() {
+    // formatted date, like yyyy-mm-dd              
+    var date = $( this ).val();
  
+    // JavaScript Date object
+    var dateObject = $( this ).mobipick( "option", "date" );
+});
+
+	picker3.on( "change", function() {
+    // formatted date, like yyyy-mm-dd              
+    var date = $( this ).val();
+ 
+    // JavaScript Date object
+    var dateObject = $( this ).mobipick( "option", "date" );
+});
 
 });
 });
