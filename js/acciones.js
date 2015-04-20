@@ -118,7 +118,7 @@ var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
 
 function cargarlistapacientes()
 {
-$('#listapacientes').empty();
+//$('#listapacientes').empty();
    db.transaction (function (ejecutar){
    var sql = "SELECT Nombre_Paciente FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
