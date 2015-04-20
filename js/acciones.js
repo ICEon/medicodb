@@ -50,6 +50,7 @@ $(document).ready(function(e) {
 	var dbTam = 8 * 1024 * 1024; // 8MB
 	var db = openDatabase ("Medico", "1.0", "Datos app medico", dbTam);
 
+
     db.transaction (function (transaction)
       {
        var sql = "CREATE TABLE IF NOT EXISTS Pacientes2 " +
@@ -85,6 +86,14 @@ $(document).ready(function(e) {
 document.addEventListener("deviceready",function(){
 
 
+$('#Borrar').on('tap', function (){
+	db.transaction (function (transaction) 
+  {
+    var sql = "DROP TABLE Pacientes2 ";
+    transaction.executeSql (sql, undefined, function (){ alert ("borrada");}, error);
+  });
+});
+
 $('#Guardar').on('tap', function (){
 alert ('guardar '+ $( "#TxtInterrogatorioDirecto option:selected" ).text());
    db.transaction(function (tx) {
@@ -103,7 +112,7 @@ var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
   alert (pconsulta);
   alert (pinterrogatorio);
   
-  tx.executeSql('INSERT INTO Pacientes (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
+//  tx.executeSql('INSERT INTO Pacientes (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
   
   var sqlagregar = "INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo) VALUES (?,?,?,?,?,?)";
  
