@@ -27,7 +27,7 @@ $(document).ready(function(e) {
 
     db.transaction (function (transaction)
       {
-       var sql = "CREATE TABLE IF NOT EXISTS Pacientes " +
+       var sql = "CREATE TABLE IF NOT EXISTS Pacientes2 " +
        " (Cve_Paciente INTEGER  PRIMARY KEY, " +
        "Nombre_Paciente NOT NULL, " +
        "Edad_Paciente NOT NULL, " +
@@ -63,14 +63,14 @@ document.addEventListener("deviceready",function(){
 $('#Guardar').on('tap', function (){
 	db.transaction(function (tx) {
 
-   tx.executeSql('INSERT INTO Pacientes (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
+   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
 });
 });
 
 $('#Mostrar').on('tap', function(){
 	
 	  db.transaction (function (ejecutar){
-   var sql = "SELECT * FROM Pacientes";
+   var sql = "SELECT * FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
    function (ejecutar, resultado){
  
