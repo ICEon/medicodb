@@ -69,7 +69,7 @@
        <div align="center">
         <div data-role="controlgroup"  data-type="vertical" style="width:50%">
          <a href="#nuevo_paciente" class="ui-btn ui-shadow ui-btn-icon-right ui-btn-corner-all ui-icon-edit"> Nuevo Paciente </a>
-         <a href="#seleccion_paciente" class="ui-btn ui-shadow ui-btn-icon-right ui-btn-corner-all ui-icon-bullets"> Elegir Paciente </a>
+         <a href="#" onClick="cargarlistapacientes();" class="ui-btn ui-shadow ui-btn-icon-right ui-btn-corner-all ui-icon-bullets"> Elegir Paciente </a>
          <a href="#mostrar_paciente" class="ui-btn ui-shadow ui-btn-icon-right ui-btn-corner-all ui-icon-info"> Mostrar Paciente </a>
         </div>
        </div>
@@ -133,6 +133,36 @@
      </div>
   
 <!-- nuevo paciente -->
+
+<!-- seleccion paciente -->
+     <div data-role="page" id="seleccion_paciente" >   
+
+
+      <div data-role="header" >
+       <h1> Listado de Paciente </h1>
+      </div>
+         
+      <div data-role="main" class="ui-content" >
+       <div align="center">
+        <div style="width:65%">
+          <ul data-role="listview" data-inset="true" id="listapacientes">
+          </ul>
+        </div>
+       </div>
+      </div>
+        
+       
+      <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      <div class="pie"> </div>
+       <div data-role="navbar">
+        <h2> footer </h2>
+       </div>
+      </div>        
+        
+     </div>
+  
+<!-- seleccion paciente -->
+
 
 
 
