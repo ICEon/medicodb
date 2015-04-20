@@ -120,7 +120,7 @@ function cargarlistapacientes()
 {
 $('#listapacientes').empty();
    db.transaction (function (ejecutar){
-   var sql = "SELECT * FROM Pacientes2";
+   var sql = "SELECT Nombre_Paciente FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
    function (ejecutar, resultado){
  
@@ -128,11 +128,11 @@ $('#listapacientes').empty();
 for (var x = 0; x < resultado.rows.length ; x++)
 {
 	
-	var filaP = resultado.rows.item (x)
+	var filaP = resultado.rows.item (x);
 	
 
-	$("#listapacientes").append("<li><a href='#' class='pacienteseleccionado' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
-$('#listapacientes').listview('refresh')
+	$("#listapacientes").append("<li><a href='#' class='pacienteseleccionado'>"+filaP.Nombre_Paciente+"</a></li>	");
+$('#listapacientes').listview('refresh');
 
 
 }
