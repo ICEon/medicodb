@@ -79,20 +79,14 @@ document.addEventListener("deviceready",function(){
 
 
 $('#Guardar').on('tap', function (){
-//	db.transaction(function (tx) {
-alert ($('#TxtNombrePaciente').text());
-alert ($('#TxtNombrePaciente').val());
-/*TxtEdadPaciente
-TxtDirPaciente
-TxtFNacPaciente
-TxtFConsultaPaciente
-TxtInterrogatorioDirecto
-   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "+ +", "+ +", "+ +", "+ +", "+ +", "+ +")');
-});*/
+alert ('guardar');
+   db.transaction(function (tx) {
+   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ("'+ $('#TxtNombrePaciente').val() + '", "'+ $('#TxtEdadPaciente').val() +'", "'+ $('#TxtDirPaciente').val() +'", "'+ $('#TxtFNacPaciente').val() +'", "'+ $('#TxtFConsultaPaciente').val() +'", "'+ $( "#TxtInterrogatorioDirecto option:selected" ).text() +'")');
+});
 });
 
 $('#Mostrar').on('tap', function(){
-	
+	alert ('mostrar');
 	  db.transaction (function (ejecutar){
    var sql = "SELECT * FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
