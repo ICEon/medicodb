@@ -206,7 +206,7 @@ for (var x = 0; x < resultado.rows.length ; x++)
 
 $('#btnlistadopacientes').on('click', function (){
 	alert ("here");
-//	cargarlistapacientes();
+	cargarlistapacientes();
 	$( "body" ).pagecontainer( "change", "#seleccion_paciente", { transition: "slide" });
 });
 
