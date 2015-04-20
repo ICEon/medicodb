@@ -80,7 +80,8 @@ document.addEventListener("deviceready",function(){
 
 $('#Guardar').on('tap', function (){
 //	db.transaction(function (tx) {
-$('#TxtNombrePaciente').text()
+alert ($('#TxtNombrePaciente').text());
+alert ($('#TxtNombrePaciente').val());
 /*TxtEdadPaciente
 TxtDirPaciente
 TxtFNacPaciente
