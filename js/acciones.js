@@ -131,7 +131,7 @@ for (var x = 0; x < resultado.rows.length ; x++)
 	var filaP = resultado.rows.item (x)
 	
 
-	$("#listapacientes").append("<li class='pacienteseleccionado'><a href='#' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
+	$("#listapacientes").append("<li><a href='#' class='pacienteseleccionado' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
 $('#listapacientes').listview('refresh')
 
 
@@ -146,7 +146,7 @@ $('#listapacientes').listview('refresh')
 
 $('.pacienteseleccionado').on ('tap', function (){
     alert ("pie paciente seleccionado");
-    $(".pie").append("<h3>"+  $(this).find('a').text() +"</h3>");
+    $(".pie").append("<h3>"+  $(this).text() +"</h3>");
 });
 
 function pacientefooter()
