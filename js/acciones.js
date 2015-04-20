@@ -2,9 +2,16 @@
 
 // --------------- en esta parte se inicializa el selctor de fecha --------------------------
 $(document).on("pagecreate",function(){
+	
 	var preguntas1 = "";
     var preguntas2 = "";
 	//en español
+	
+	function error (transaction, err) 
+{
+  alert ("DB error : " + err.message);
+  return false;
+}    
 		$("input.selectorfechaum", this ).mobipick({
 				locale: "es"
 			});
@@ -96,13 +103,15 @@ var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
   alert (pconsulta);
   alert (pinterrogatorio);
   
+  tx.executeSql('INSERT INTO Pacientes (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
+  
   var sqlagregar = "INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo) VALUES (?,?,?,?,?,?)";
  
 
     tx.executeSql (sqlagregar, [pnombre, pedad, pdireccion, pnacimiento, pconsulta, pinterrogatorio], function ()
     { 
       alert ("Paciente Agregado");
-    }, function() { alert ("BD error : " + err.message); });
+    }, error);
  
 	
 });
