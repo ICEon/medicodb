@@ -115,8 +115,10 @@ var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
 });
 });
 
+
 function cargarlistapacientes()
 {
+	alert ("cargar");
    db.transaction (function (ejecutar){
    var sql = "SELECT * FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
@@ -127,6 +129,7 @@ for (var x = 0; x < resultado.rows.length ; x++)
 {
 	
 	var filaP = resultado.rows.item (x)
+	alert ("clave->"+filaP.Cve_Paciente);
 	$("#listapacientes").append("<li class='pacienteseleccionado'><a href='#' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
 
 
@@ -137,8 +140,10 @@ for (var x = 0; x < resultado.rows.length ; x++)
 
 	  });
 
-$( "body" ).pagecontainer( "change", "#seleccion_paciente", { transition: "slide" });
+
 }
+
+
 
 function pacientefooter()
  {
@@ -198,6 +203,12 @@ for (var x = 0; x < resultado.rows.length ; x++)
 	  $("label[for="+$quien+"]").css('color','#F00');	 
 	 }
  });
+
+$('#btnlistadopacientes').on('click', function (){
+	alert ("here");
+//	cargarlistapacientes();
+	$( "body" ).pagecontainer( "change", "#seleccion_paciente", { transition: "slide" });
+});
 
 
 //cuando le doy 'tap' al elemento con el id 'calcular' se ejecuta este codigo 
