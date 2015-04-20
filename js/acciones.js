@@ -89,9 +89,14 @@ var pdireccion = $('#TxtDirPaciente').val();
 var pnacimiento = $('#TxtFNacPaciente').val();
 var pconsulta = $('#TxtFConsultaPaciente').val();
 var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
+  alert (pnombre);
+  alert (pedad);
+  alert (pdireccion);
+  alert (pnacimiento);
+  alert (pconsulta);
+  alert (pinterrogatorio);
   
-  
-  var sqlagregar = "INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo ) VALUES (?,?,?,?,?,?)";
+  var sqlagregar = "INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo) VALUES (?,?,?,?,?,?)";
  
 
     tx.executeSql (sqlagregar, [pnombre, pedad, pdireccion, pnacimiento, pconsulta, pinterrogatorio], function ()
