@@ -67,6 +67,31 @@ $('#Guardar').on('tap', function (){
 });
 });
 
+$('#Mostrar').on('tap', function(){
+	
+	  db.transaction (function (ejecutar){
+   var sql = "SELECT * FROM Pacientes";
+   ejecutar.executeSql (sql, undefined,
+   function (ejecutar, resultado){
+ 
+
+for (var x = 0; x < resultado.rows.length ; x++)
+{
+	
+	var filaP = resultado.rows.item (x)
+  alert (filaP.Nombre_Paciente);
+    alert (filaP.Cve_Paciente);
+ //( new question(filaP.CvePregunta,filaP.Pregunta, filaP.R1,filaP.R2, filaP.R3.);	
+}
+
+   });
+
+	  });
+
+
+});
+
+
 // esta parte se ejecuta cuando se le de click a un imput de tipo check box (cualquier checkbox)
  $('input:checkbox').change(function() {
 //por medio de el id de a quien se le hizo click podemos saber a quien hace que cosa
