@@ -118,7 +118,7 @@ var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
 
 function cargarlistapacientes()
 {
-	alert ("cargar");
+$('#listapacientes').empty();
    db.transaction (function (ejecutar){
    var sql = "SELECT * FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
@@ -129,7 +129,8 @@ for (var x = 0; x < resultado.rows.length ; x++)
 {
 	
 	var filaP = resultado.rows.item (x)
-	alert ("clave->"+filaP.Cve_Paciente);
+	
+
 	$("#listapacientes").append("<li class='pacienteseleccionado'><a href='#' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
 $('#listapacientes').listview('refresh')
 
@@ -143,7 +144,10 @@ $('#listapacientes').listview('refresh')
 
 }
 
+$('#pacienteseleccionado').on ('click', function (){
 
+    $(".pie").append("<h3>"+  $(this).find('a').text() +"</h3>");
+});
 
 function pacientefooter()
  {
@@ -158,7 +162,7 @@ function pacientefooter()
   paciente_actual =(filaP.Nombre_Paciente);
   clave_actual =  (filaP.Cve_Paciente);
  //( new question(filaP.CvePregunta,filaP.Pregunta, filaP.R1,filaP.R2, filaP.R3.);	
-   $(".pie").append("<h1>"+ paciente_actual +"</h1>");
+   $(".pie").append("<h3>"+ paciente_actual +"</h3>");
 
    });
 		  });
