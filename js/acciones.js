@@ -144,7 +144,7 @@ $('#listapacientes').listview('refresh')
 
 }
 
-$('.pacienteseleccionado').on ('click', function (){
+$('.pacienteseleccionado').on ('tap', function (){
     alert ("pie paciente seleccionado");
     $(".pie").append("<h3>"+  $(this).find('a').text() +"</h3>");
 });
