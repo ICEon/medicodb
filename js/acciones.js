@@ -95,7 +95,7 @@ $('#Borrar').on('tap', function (){
 });
 
 $('#Guardar').on('tap', function (){
-alert ('guardar '+ $( "#TxtInterrogatorioDirecto option:selected" ).text());
+
    db.transaction(function (tx) {
 	   
 	   
@@ -105,29 +105,37 @@ var pdireccion = $('#TxtDirPaciente').val();
 var pnacimiento = $('#TxtFNacPaciente').val();
 var pconsulta = $('#TxtFConsultaPaciente').val();
 var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
-  alert (pnombre);
-  alert (pedad);
-  alert (pdireccion);
-  alert (pnacimiento);
-  alert (pconsulta);
-  alert (pinterrogatorio);
-  
-//  tx.executeSql('INSERT INTO Pacientes (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo, FProbAlum_Paciente, Riesgo_Obstetrico, FUMen_Paciente ) VALUES ( "Juana", "34", "Calle no se", "12/11/1994", "17/04/2015", "Si", "14/11/2015", "Bajo", "14/02/2015")');
   
   var sqlagregar = "INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo) VALUES (?,?,?,?,?,?)";
  
 
-    tx.executeSql (sqlagregar, [pnombre, pedad, pdireccion, pnacimiento, pconsulta, pinterrogatorio], function ()
-    { 
-      alert ("Paciente Agregado");
-    }, error);
+    tx.executeSql (sqlagregar, [pnombre, pedad, pdireccion, pnacimiento, pconsulta, pinterrogatorio], pacientefooter (), error);
  
 	
 });
 });
 
+function pacientefooter()
+ {
+		  db.transaction (function (ejecutar){
+   var sql = "SELECT * FROM Pacientes2";
+   ejecutar.executeSql (sql, undefined,
+   function (ejecutar, resultado){
+ 
+
+	
+	var filaP = resultado.rows.item (resultado.rows.length-1)
+  paciente_actual =(filaP.Nombre_Paciente);
+  clave_actual =  (filaP.Cve_Paciente);
+ //( new question(filaP.CvePregunta,filaP.Pregunta, filaP.R1,filaP.R2, filaP.R3.);	
+   $(".pie").append("<h1>"+ paciente_actual +"</h1>");
+
+   });
+		  });
+ }
+
 $('#Mostrar').on('tap', function(){
-	alert ('mostrar');
+
 	  db.transaction (function (ejecutar){
    var sql = "SELECT * FROM Pacientes2";
    ejecutar.executeSql (sql, undefined,
