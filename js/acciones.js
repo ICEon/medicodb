@@ -81,7 +81,24 @@ document.addEventListener("deviceready",function(){
 $('#Guardar').on('tap', function (){
 alert ('guardar '+ $( "#TxtInterrogatorioDirecto option:selected" ).text());
    db.transaction(function (tx) {
-   tx.executeSql('INSERT INTO Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo ) VALUES ("'+ $('#TxtNombrePaciente').val() + '", "'+ $('#TxtEdadPaciente').val() +'", "'+ $('#TxtDirPaciente').val() +'", "'+ $('#TxtFNacPaciente').val() +'", "'+ $('#TxtFConsultaPaciente').val() +'", "'+ $( "#TxtInterrogatorioDirecto option:selected" ).text() +'")');
+	   
+	   
+var pnombre = $('#TxtNombrePaciente').val();
+var pedad = $('#TxtEdadPaciente').val();
+var pdireccion = $('#TxtDirPaciente').val();
+var pnacimiento = $('#TxtFNacPaciente').val();
+var pconsulta = $('#TxtFConsultaPaciente').val();
+var pinterrogatorio = $( "#TxtInterrogatorioDirecto option:selected" ).text();
+  
+  var sqlagregar = "Pacientes2 (Nombre_Paciente, Edad_Paciente, Dir_Paciente, FNac_Paciente, FConsulta_Paciente, Interrogtorio_Directo ) VALUES (?,?,?,?,?,?)";
+ 
+
+    tx.executeSql (sqlagregar, [pnombre, pedad, pdireccion, pnacimiento, pconsulta, pinterrogatorio], function ()
+    { 
+      alert ("Paciente Agregado");
+    }, function() { alert ("BD error : " + err.message); });
+ 
+	
 });
 });
 
