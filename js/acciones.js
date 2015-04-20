@@ -131,7 +131,7 @@ for (var x = 0; x < resultado.rows.length ; x++)
 	var filaP = resultado.rows.item (x)
 	alert ("clave->"+filaP.Cve_Paciente);
 	$("#listapacientes").append("<li class='pacienteseleccionado'><a href='#' id='"+ filaP.Cve_Paciente+"'>"+filaP.Nombre_Paciente+"</a></li>	");
-
+$('#listapacientes').listview('refresh')
 
 
 }
