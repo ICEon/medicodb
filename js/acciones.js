@@ -94,6 +94,11 @@ $('#Borrar').on('tap', function (){
   });
 });
 
+$('.pacienteseleccionado').on ('tap', function (){
+    alert ("pie paciente seleccionado");
+    $(".pie").append("<h3>"+  $(this).find('a').text() +"</h3>");
+});
+
 $('#Guardar').on('tap', function (){
 
    db.transaction(function (tx) {
@@ -144,10 +149,6 @@ $('#listapacientes').listview('refresh');
 */
 }
 
-$('.pacienteseleccionado').on ('tap', function (){
-    alert ("pie paciente seleccionado");
-    $(".pie").append("<h3>"+  $(this).text() +"</h3>");
-});
 
 function pacientefooter()
  {
