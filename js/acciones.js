@@ -94,7 +94,7 @@ $('#Borrar').on('tap', function (){
   });
 });
 
-$('.pacienteseleccionado').on ('tap', function (){
+$(document).on('tap', "li.pacienteseleccionado", function() {
     alert ("pie paciente seleccionado");
     $(".pie").append("<h3>"+  $(this).find('a').text() +"</h3>");
 });
